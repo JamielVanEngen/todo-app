@@ -1,0 +1,16 @@
+<button mat-button [matMenuTriggerFor]="menuroot">Menu</button>
+<!-- #docregion sub-menu -->
+<mat-menu #menuroot="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="info">Info</button>
+  <button mat-menu-item [matMenuTriggerFor]="todos">Todos</button>
+</mat-menu>
+
+<mat-menu #info="matMenu">
+  <button mat-menu-item>About</button>
+  <button mat-menu-item>Contact</button>
+</mat-menu>
+
+<mat-menu #todos="matMenu">
+  <button mat-menu-item>Manage</button>
+  <button mat-menu-item>Create</button>
+</mat-menu>
