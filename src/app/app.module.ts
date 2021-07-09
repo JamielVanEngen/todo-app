@@ -9,12 +9,16 @@ import { MenubarComponent } from './menubar/menubar.component';
 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    MenubarComponent
+    MenubarComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
