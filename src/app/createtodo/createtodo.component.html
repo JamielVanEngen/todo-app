@@ -1,0 +1,26 @@
+<h1>Create a new Todo item</h1>
+<form [formGroup]="todoForm">
+	<div>
+		<mat-form-field appearance="standard">
+			<mat-label>Task</mat-label>
+			<input matInput placeholder="Task" formControlName="task">
+			<mat-hint>Name your todo task!</mat-hint>
+			<mat-error *ngIf="todoForm.controls['task'].invalid">
+				The task name is required to have atleast 4 characters
+			</mat-error>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field appearance="fill">
+			<mat-label>Due date</mat-label>
+			<input matInput [matDatepicker]="dp" formControlName="dueDate">
+			<mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+			<mat-datepicker #dp></mat-datepicker>
+			<mat-error *ngIf="todoForm.controls['dueDate'].invalid">
+				The due date has to be at least today!
+			</mat-error>
+		</mat-form-field>
+	</div>
+	<button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Create</button>
+	<button mat-raised-button type="submit"  (click)="back()">Back</button>
+</form>
