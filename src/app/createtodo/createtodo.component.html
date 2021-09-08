@@ -1,5 +1,5 @@
 <h1>Create a new Todo item</h1>
-<form [formGroup]="todoForm">
+<form [formGroup]="todoForm" id="todoForm">
 	<div>
 		<mat-form-field appearance="standard">
 			<mat-label>Task</mat-label>
@@ -21,6 +21,6 @@
 			</mat-error>
 		</mat-form-field>
 	</div>
+	<button mat-raised-button routerLink="/todos">Back</button>
 	<button mat-raised-button type="submit" color="primary" (click)="onSubmit()">Create</button>
-	<button mat-raised-button type="submit"  (click)="back()">Back</button>
 </form>
