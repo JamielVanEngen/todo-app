@@ -1,0 +1,44 @@
+version: "3.9"
+services:
+  start_agta:
+    image: dadarek/wait-for-dependencies
+    environment:
+      TIMEOUT_LENGTH: 180
+    depends_on:
+      - selenium
+      - graphwalker
+      - web
+      - sut
+      - agta
+    command: selenium:4444 graphwalker:8887 
+  web:
+    image: todo-app:latest
+    ports:
+      - "8080:80"
+  sut:
+    image: todo-app:latest
+    ports:
+      - "8181:81"
+  graphwalker:
+    image: "altwalker/graphwalker:4.3.1"
+    ports:
+      - "8887:8887"
+    command: gw online -s RESTFUL
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - 4444:4444
+      - 7900:7900
+  agta:
+    image: "pec/agta:0.4.3"
+    environment:
+      - CONTAINER_ID=content
+      - SERVER_PORT=9090
+      - ELEMENT_IGNORE_CLASS=agta-ignore
+      - GRAPHWALKER_URL=http://graphwalker:8887/graphwalker/
+      - WEBSITE_TO_MODEL=http://web/
+      - SUT=http://sut/
+      - SELENIUM_URL= http://selenium:4444/
+    ports:
+      - 9090:9090
+  
